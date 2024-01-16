@@ -12,7 +12,7 @@ from api.serializers import UserSerializer, WarehouseSerializer, ProductSerializ
 class UserModelViewSet(viewsets.ModelViewSet):
     queryset = ApiUser.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 
 class WarehouseModelViewSet(viewsets.ModelViewSet):
@@ -24,7 +24,6 @@ class ProductModelViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-    @login_required
     @permission_required('api.add_product', raise_exception=True)
     def add_product(self, request):
         print(request)
